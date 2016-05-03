@@ -11,7 +11,13 @@ describe('A Tennis Game Should', () => {
     it('start with both players with zero points', () => {
         player_one.score.should.be.equal(0);
         player_two.score.should.be.equal(0);
-    })
+    });
+
+    it('add 15 points when a player scores for the first time', () => {
+        player_one.score.should.be.equal(0);
+        game.incrementScoreForFirstPlayer();
+        player_one.score.should.be.equal(15);
+    });
 })
 
 function Game() {
@@ -28,7 +34,10 @@ function Game() {
 
     return {
         getFirstPlayer : getFirstPlayer,
-        getSecondPlayer : getSecondPlayer
+        getSecondPlayer : getSecondPlayer,
+        incrementScoreForFirstPlayer: () => {
+            playerOne.score += 15;
+        }
     }
 
 }
