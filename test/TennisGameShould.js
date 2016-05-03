@@ -3,10 +3,12 @@
 const should = require('chai').should();
 
 describe('A Tennis Game Should', () => {
+
+    const game = Game();
+    const player_one = game.getFirstPlayer();
+    const player_two = game.getSecondPlayer();
+
     it('start with both players with zero points', () => {
-        const game = Game();
-        const player_one = game.getFirstPlayer();
-        const player_two = game.getSecondPlayer();
         player_one.score.should.be.equal(0);
         player_two.score.should.be.equal(0);
     })
