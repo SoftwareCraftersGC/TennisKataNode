@@ -52,4 +52,16 @@ describe('A Tennis Game Should', () => {
         game.whoWins().should.be.equal('PLAYER TWO');
     });
 
+    it('have a deuce when both players have 40 points', () => {
+        game.incrementScoreForFirstPlayer();
+        game.incrementScoreForFirstPlayer();
+        game.incrementScoreForFirstPlayer();
+        game.incrementScoreForSecondPlayer();
+        game.incrementScoreForSecondPlayer();
+        game.incrementScoreForSecondPlayer();
+        game.playersScores().should.be.equal('Deuce');
+    });
+
+
+
 });

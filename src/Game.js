@@ -27,6 +27,7 @@ function Game() {
             return 'NONE';
         },
         playersScores: () => {
+            if (playerOne.score == 40 && playerTwo.score == 40) return 'Deuce';
             return `${playerOne.score} - ${playerTwo.score}`;
         }
     }
