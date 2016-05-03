@@ -21,13 +21,19 @@ describe('A Tennis Game Should', () => {
         game.scoreForFirstPlayer().should.be.equal(15);
     });
 
-    it('add 40 points when a player scores three times', () => {
+    it('add 40 points when the first player scores three times', () => {
         game.incrementScoreForFirstPlayer();
         game.incrementScoreForFirstPlayer();
         game.incrementScoreForFirstPlayer();
         game.scoreForFirstPlayer().should.be.equal(40);
     });
 
+    it('add 40 points when the second player scores three times', () => {
+        game.incrementScoreForSecondPlayer();
+        game.incrementScoreForSecondPlayer();
+        game.incrementScoreForSecondPlayer();
+        game.scoreForSecondPlayer().should.be.equal(40);
+    });
 
 })
 
@@ -35,16 +41,24 @@ function Game() {
     const playerOne = new Player();
     const playerTwo = new Player();
 
+    function incrementScoreFor(player) {
+        let increment = 15;
+
+        if (player.score == 30)
+            increment = 10;
+        player.score += increment;
+    }
+
     return {
         scoreForFirstPlayer: () => playerOne.score,
         scoreForSecondPlayer: () => playerTwo.score,
         incrementScoreForFirstPlayer: () => {
-            let increment = 15;
-
-            if (playerOne.score == 30)
-                increment = 10;
-            playerOne.score += increment;
+            incrementScoreFor(playerOne);
+        },
+        incrementScoreForSecondPlayer : () =>{
+            incrementScoreFor(playerTwo);
         }
+
     }
 
 }
