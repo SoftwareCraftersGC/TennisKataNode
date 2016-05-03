@@ -2,6 +2,8 @@
 
 const should = require('chai').should();
 
+const Game = require('../src/Game.js');
+
 describe('A Tennis Game Should', () => {
 
     let game;
@@ -44,42 +46,4 @@ describe('A Tennis Game Should', () => {
         game.whoWins().should.be.equal('PLAYER ONE');
     });
 
-})
-
-function Game() {
-    const playerOne = new Player();
-    const playerTwo = new Player();
-
-    function incrementScoreFor(player) {
-        let increment = 15;
-
-        if (player.score == 30)
-            increment = 10;
-        player.score += increment;
-    }
-
-    return {
-        scoreForFirstPlayer: () => playerOne.score,
-        scoreForSecondPlayer: () => playerTwo.score,
-        incrementScoreForFirstPlayer: () => {
-            incrementScoreFor(playerOne);
-        },
-        incrementScoreForSecondPlayer : () =>{
-            incrementScoreFor(playerTwo);
-        },
-        whoWins: () => {
-            if (playerOne.score == 55) return 'PLAYER ONE';
-            return 'NONE';
-        }
-
-    }
-
-}
-
-function Player() {
-    let score = 0;
-
-    return {
-        score
-    }
-}
+});
