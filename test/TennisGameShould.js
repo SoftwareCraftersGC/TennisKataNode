@@ -13,28 +13,26 @@ describe('A Tennis Game Should', () => {
     });
 
     it('start with both players with zero points', () => {
-        game.scoreForFirstPlayer().should.be.equal(0);
-        game.scoreForSecondPlayer().should.be.equal(0);
+        game.playersScores().should.be.equal('0 - 0');
     });
 
     it('add 15 points when a player scores for the first time', () => {
-        game.scoreForFirstPlayer().should.be.equal(0);
         game.incrementScoreForFirstPlayer();
-        game.scoreForFirstPlayer().should.be.equal(15);
+        game.playersScores().should.be.equal('15 - 0');
     });
 
     it('add 40 points when the first player scores three times', () => {
         game.incrementScoreForFirstPlayer();
         game.incrementScoreForFirstPlayer();
         game.incrementScoreForFirstPlayer();
-        game.scoreForFirstPlayer().should.be.equal(40);
+        game.playersScores().should.be.equal('40 - 0');
     });
 
     it('add 40 points when the second player scores three times', () => {
         game.incrementScoreForSecondPlayer();
         game.incrementScoreForSecondPlayer();
         game.incrementScoreForSecondPlayer();
-        game.scoreForSecondPlayer().should.be.equal(40);
+        game.playersScores().should.be.equal('0 - 40');
     });
 
 

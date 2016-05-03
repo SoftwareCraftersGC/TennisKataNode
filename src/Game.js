@@ -15,8 +15,6 @@ function Game() {
     }
 
     return {
-        scoreForFirstPlayer: () => playerOne.score,
-        scoreForSecondPlayer: () => playerTwo.score,
         incrementScoreForFirstPlayer: () => {
             incrementScoreFor(playerOne);
         },
@@ -27,10 +25,11 @@ function Game() {
             if (playerOne.score == 55) return 'PLAYER ONE';
             if (playerTwo.score == 55) return 'PLAYER TWO';
             return 'NONE';
+        },
+        playersScores: () => {
+            return `${playerOne.score} - ${playerTwo.score}`;
         }
-
     }
-
 }
 
 module.exports = Game;
