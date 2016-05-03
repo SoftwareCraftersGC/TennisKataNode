@@ -62,6 +62,18 @@ describe('A Tennis Game Should', () => {
         game.playersScores().should.be.equal('Deuce');
     });
 
+    it('have a advantage when one player has him an advantage', () => {
+        game.incrementScoreForFirstPlayer();
+        game.incrementScoreForFirstPlayer();
+        game.incrementScoreForFirstPlayer();
+        game.incrementScoreForSecondPlayer();
+        game.incrementScoreForSecondPlayer();
+        game.incrementScoreForSecondPlayer();
+
+        game.incrementScoreForFirstPlayer();
+        game.playersScores().should.be.equal('AD - 40');
+    });
+
 
 
 });
