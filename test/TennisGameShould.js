@@ -35,6 +35,15 @@ describe('A Tennis Game Should', () => {
         game.scoreForSecondPlayer().should.be.equal(40);
     });
 
+
+    it('first player wins the game when scores four times', () => {
+        game.incrementScoreForFirstPlayer();
+        game.incrementScoreForFirstPlayer();
+        game.incrementScoreForFirstPlayer();
+        game.incrementScoreForFirstPlayer();
+        game.whoWins().should.be.equal('PLAYER ONE');
+    });
+
 })
 
 function Game() {
@@ -57,6 +66,10 @@ function Game() {
         },
         incrementScoreForSecondPlayer : () =>{
             incrementScoreFor(playerTwo);
+        },
+        whoWins: () => {
+            if (playerOne.score == 55) return 'PLAYER ONE';
+            return 'NONE';
         }
 
     }
