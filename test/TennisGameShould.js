@@ -46,4 +46,12 @@ describe('A Tennis Game Should', () => {
         game.whoWins().should.be.equal('PLAYER ONE');
     });
 
+    it('second player wins the game when scores four times', () => {
+        game.incrementScoreForSecondPlayer();
+        game.incrementScoreForSecondPlayer();
+        game.incrementScoreForSecondPlayer();
+        game.incrementScoreForSecondPlayer();
+        game.whoWins().should.be.equal('PLAYER TWO');
+    });
+
 });

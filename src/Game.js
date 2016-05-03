@@ -25,6 +25,7 @@ function Game() {
         },
         whoWins: () => {
             if (playerOne.score == 55) return 'PLAYER ONE';
+            if (playerTwo.score == 55) return 'PLAYER TWO';
             return 'NONE';
         }
 
