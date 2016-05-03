@@ -4,7 +4,11 @@ const should = require('chai').should();
 
 describe('A Tennis Game Should', () => {
 
-    const game = Game();
+    let game;
+
+    beforeEach(() => {
+        game = Game();
+    });
 
     it('start with both players with zero points', () => {
         game.scoreForFirstPlayer().should.be.equal(0);
@@ -16,6 +20,15 @@ describe('A Tennis Game Should', () => {
         game.incrementScoreForFirstPlayer();
         game.scoreForFirstPlayer().should.be.equal(15);
     });
+
+    it('add 40 points when a player scores three times', () => {
+        game.incrementScoreForFirstPlayer();
+        game.incrementScoreForFirstPlayer();
+        game.incrementScoreForFirstPlayer();
+        game.scoreForFirstPlayer().should.be.equal(40);
+    });
+
+
 })
 
 function Game() {
@@ -26,7 +39,11 @@ function Game() {
         scoreForFirstPlayer: () => playerOne.score,
         scoreForSecondPlayer: () => playerTwo.score,
         incrementScoreForFirstPlayer: () => {
-            playerOne.score += 15;
+            let increment = 15;
+
+            if (playerOne.score == 30)
+                increment = 10;
+            playerOne.score += increment;
         }
     }
 
